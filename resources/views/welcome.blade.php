@@ -24,6 +24,8 @@
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
                             <th scope="col">Grade</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,6 +34,17 @@
                                     <td>{{$student['id']}}</td>
                                     <td>{{$student['name']}}</td>
                                     <td>{{$student['grade']}}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary justify-content-end"  href="{{route('student.edit', $student)}}">Edit</a>    
+                                    </td>
+                                    <td>      
+                                        <form action="{{ route('student.destroy', $student) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit">Delete</button>
+                                        </form>
+
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
